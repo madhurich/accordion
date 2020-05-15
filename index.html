@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <meta content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <body>
+        <div id="accordion">
+            <div>
+                <header><a href="#">item1</a></header>
+                <div class="content">item 1 content</div>
+            </div> 
+            <div>
+                <header><a href="#">item2</a></header>
+                <div class="content">item 2 content</div>
+            </div> 
+            <div>
+                <header><a href="#">item3</a></header>
+                <div class="content">item 3 content</div>
+            </div>
+        </div>
+        
+        <script>
+            var contentDivs = document.querySelectorAll('.content');
+            document.getElementById('accordion').addEventListener('click', function(event) {
+                if(event.target.localName !== "a") {
+                    return;
+                }
+                var contentElement = event.target.parentElement.nextElementSibling;
+                
+                if(contentElement.classList.contains('active')) {
+                    contentElement.classList.remove('active');
+                }else {
+                    for(var i = 0; i< contentDivs.length; i++){
+                        if(contentDivs[i].classList.contains('active')) {
+                            contentDivs[i].classList.remove('active');
+                        }
+                    }
+                    contentElement.classList.add('active');
+                }
+            });
+        </script>
+    </body>
+</html>
